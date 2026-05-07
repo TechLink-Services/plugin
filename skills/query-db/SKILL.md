@@ -13,24 +13,29 @@ metadata:
 
 When this skill triggers, help the user retrieve data from the company database via the dev-db connector without requiring them to know SQL or technical database concepts.
 
-## Core behavior
+## MANDATORY WORKFLOW — follow every step, no exceptions
 
-1. Clarify the request if needed — ask one focused question if the intent is ambiguous (e.g., which time period, which client, which status).
-2. Translate the user's plain-language request into the appropriate query using the dev-db connector tools.
-3. Present results in a clean, readable format — use a table for lists, plain numbers for counts, and a brief summary sentence at the top.
-4. Offer a natural follow-up (e.g., "Want me to filter this by date range or export it?").
+**Step 1 — Check for a saved query tool first.**
+The connector exposes pre-built tools for common requests (`user_account_list`, `workorder_browse_by_client`, `client_invoice_list`, etc.). If one matches the request, use it — do not write raw SQL. Check the domain reference below to pass the right parameter values.
+
+**Step 2 — If writing raw SQL, describe every table first.**
+Call `describe_table` for each table you plan to use. Do this before writing a single line of SQL. This database has non-standard column names — `users` has no `id`, `name`, or `role` column; `workorder` has no `status` column. You will get it wrong if you guess.
+
+**Step 3 — Show the columns you found.**
+After calling `describe_table`, tell the user (briefly): "Found columns: …" before writing the query. This step is visible and skipping it is a failure.
+
+**Step 4 — Write and run the query using only confirmed column names.**
+
+**Step 5 — Present results clearly.**
+Use a table for lists, plain numbers for counts, a brief summary sentence at the top. Offer a relevant follow-up.
 
 ## Audience
 
 Users range from non-technical (accounting, recruiting, marketing) to technical (developers, operations). Always communicate results in plain language. Never expose raw SQL or technical error messages to non-technical users — translate errors into plain descriptions of what went wrong and what to try instead.
 
-## Useful patterns by department
-
-See `references/query-examples.md` for ready-to-use example queries organized by department (operations, accounting, sales, recruiting, marketing, executives).
-
 ## Query guidelines
 
-The `query` tool's description contains the full, authoritative guidelines for this database — approved table names, column exclusions, date handling, polymorphic joins, and more. **Always read the `query` tool description before writing any SQL.** Do not guess table or column names; call `describe_table` for every table you plan to use before writing a query.
+This database has inconsistent naming conventions — some tables are singular (`workorder`, `client`, `task`), others plural (`tech_invoices`, `users`). Never guess a table name. The `query` tool's description contains the full approved table list and all SQL guidelines (date handling, polymorphic joins, active record filtering, etc.).
 
 ## Domain reference
 
