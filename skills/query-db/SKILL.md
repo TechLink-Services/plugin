@@ -32,6 +32,60 @@ See `references/query-examples.md` for ready-to-use example queries organized by
 
 The `query` tool's description contains the full, authoritative guidelines for this database — approved table names, column exclusions, date handling, polymorphic joins, and more. **Always read the `query` tool description before writing any SQL.** Do not guess table or column names; call `describe_table` for every table you plan to use before writing a query.
 
+## Domain reference
+
+Use these values directly — do not query the database to look them up.
+
+### User roles (`users.roles` — bitmask, use `& value` not `= value`)
+
+| Value | Role |
+|---|---|
+| 1 | Admin |
+| 2 | Employee |
+| 4 | Client |
+| 8 | Installer (field technician) |
+| 16 | Applicant |
+| 32 | Approver |
+| 64 | Sales |
+| 128 | Accountant |
+| 256 | Director |
+| 512 | Customer |
+
+Example: to list directors, call `user_account_list` with `role_flag=256`.
+
+### Work order statcodes (`workorder.statcode`)
+
+| Value | Status |
+|---|---|
+| 10 | Created |
+| 20 | Open |
+| 22 | Dispatched |
+| 40 | Assigned |
+| 50 | Accepted |
+| 60 | Scheduled |
+| 70 | On Site |
+| 75 | Incomplete |
+| 78 | Off Site / Return Needed |
+| 80 | In Review |
+| 90 | Approved |
+| 100 | Closed |
+| 105 | Cancelled |
+
+### Note types (`note.context`)
+
+| Value | Type |
+|---|---|
+| 1 | System note (auto-generated) |
+| 2 | User note (written by a person) |
+
+### Task types (`task.tasktype_id`)
+
+| Value | Type |
+|---|---|
+| 1 | RegularTask (live tasks — use for billing/finance) |
+| 2 | QuoteTask (pending-approval quote tasks) |
+| 3 | TaskAtInvoiceTime (frozen invoice snapshot) |
+
 ## Data boundaries
 
 - Only query data the dev-db connector exposes. Do not attempt to access tables or fields not surfaced by the connector.
