@@ -1,12 +1,14 @@
 ---
 name: query-db
 description: >
-  Use this skill when the user wants to pull data or get answers from the company database.
-  Trigger phrases include: "query the database", "pull data on", "show me records for",
-  "how many", "list all", "look up", "find records", "give me a report on", "what does the
-  data show for", "run a query", or any request for numbers, counts, lists, or summaries
-  that would require database access. Suitable for all team members regardless of technical
-  background — translate natural language into structured queries automatically.
+  Use this skill only when the user explicitly needs aggregate analysis, bulk reporting, or
+  cross-table queries that the SIMPL portal API cannot satisfy. Trigger phrases include:
+  "query the database", "run a query", "give me a report on", "what does the data show for",
+  "how many total", "aggregate", "sum up", "month-over-month", "year-over-year", or any
+  request requiring custom SQL or analysis across multiple data sources. Do NOT use this
+  skill for simple record lookups, status checks, or listing individual resources — use the
+  portal-resources skill for those instead. Suitable for all team members regardless of
+  technical background — translate natural language into structured queries automatically.
 metadata:
   version: "0.1.0"
 ---
