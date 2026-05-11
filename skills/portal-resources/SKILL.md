@@ -1,14 +1,17 @@
 ---
 name: portal-resources
 description: >
-  Use this skill when the user wants to view, look up, or work with resources in the SIMPL
-  portal. Trigger phrases include: "check work orders", "look up a client", "find a job",
-  "show me invoices for", "what's the status of", "find technician assignments", "pull up
-  the project for", "show me open jobs", "check scheduling", "find a work order", "look up
-  a payment", "what work orders are assigned to", "show me what's scheduled", "check the
-  portal", "find in SIMPL", or any request to retrieve, review, or summarize information
-  from the SIMPL platform. Applies to work orders, clients, projects, technicians,
-  invoices, payments, and scheduling.
+  Use this skill as the DEFAULT for any request to view, look up, list, find, or work with
+  resources in SIMPL. Trigger phrases include: "check work orders", "look up a client",
+  "find a job", "show me invoices for", "what's the status of", "find technician
+  assignments", "pull up the project for", "show me open jobs", "check scheduling", "find a
+  work order", "look up a payment", "what work orders are assigned to", "show me what's
+  scheduled", "check the portal", "find in SIMPL", "list all", "show me records for",
+  "find records", "look up", or any general request to retrieve, review, or summarize
+  information from SIMPL. Prefer this skill over query-db whenever the portal API can
+  satisfy the request — only fall back to query-db for aggregate analysis, bulk reporting,
+  or cross-table queries the portal API cannot handle. Applies to work orders, clients,
+  projects, technicians, invoices, payments, and scheduling.
 metadata:
   version: "0.1.0"
 ---
