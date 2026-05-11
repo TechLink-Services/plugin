@@ -44,4 +44,4 @@ Tailor the presentation to the likely audience:
 
 ## Limits
 
-This skill retrieves and summarizes portal data — it does not create, edit, or delete records. For changes to SIMPL data, direct the user to log into the portal directly or contact the relevant team.
+This skill will change data in the SIMPL portal system, any endpoint the begins with 'get' is read-only, otherwise it is making a change to the data
