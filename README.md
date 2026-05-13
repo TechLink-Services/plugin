@@ -62,13 +62,4 @@ If you received a `claude-plugin.plugin` file directly, install it from within C
 
 ## Connector setup
 
-This plugin requires two internal MCP servers. After installing, configure their URLs before the skills will work.
-
-Open `~/.claude/plugins/techlink-claude-plugin/.mcp.json` and replace the placeholder URLs:
-
-| Server | Replace this placeholder |
-|--------|--------------------------|
-| `dev-portal` | `https://replace-with-your-dev-portal-mcp-url/mcp` |
-| `dev-db` | `https://replace-with-your-dev-db-mcp-url/mcp` |
-
-Contact your system administrator for the correct URLs, then run `/reload-plugins` to apply the changes.
+This plugin requires two internal MCP servers (`dev-portal` and `dev-db`) to be configured in Claude Code before the skills will work. Connector setup is handled by the development team as part of onboarding — reach out to them to get your machine configured.
