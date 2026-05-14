@@ -1,2 +1,4 @@
 /.claude/worktrees
 claude-plugin.plugin
+*.DS_Store
+skills/.DS_Store
