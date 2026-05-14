@@ -1,6 +1,7 @@
 {
   "name": "techlink-claude-plugin",
-"description": "Helps every TechLink Services team member use the SIMPL portal and automate repetitive workflows — covering work orders, scheduling, billing, client deliverables, and more.",
+  "version": "0.1.1",
+  "description": "Helps every TechLink Services team member use the SIMPL portal and automate repetitive workflows — covering work orders, scheduling, billing, client deliverables, and more.",
   "author": {
     "name": "TechLink Services"
   },
